@@ -1,0 +1,13 @@
+name: aiapk
+
+services:
+  api:
+    build:
+      context: ../ai-service
+      dockerfile: Dockerfile
+    container_name: aiapk-api
+    env_file:
+      - ../ai-service/.env
+    ports:
+      - "${API_PORT:-8000}:8000"
+    restart: unless-stopped
